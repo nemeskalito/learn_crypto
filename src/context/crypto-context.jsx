@@ -1,7 +1,8 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useEffect, useState } from "react";
 import { fakeFetchCrypto, fetchAssets } from "../api.js";
 import { percentDifference } from "../utils.js";
+import useConfig from "antd/es/config-provider/hooks/useConfig.js";
 
 const CryptoContext = createContext({
   assets: [],
@@ -44,3 +45,7 @@ export function CryptoContextProvider({ children }) {
 }
 
 export default CryptoContext;
+
+export function useCrypto() {
+  return useContext(CryptoContext);
+}
